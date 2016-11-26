@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Popular Movies App</string>
+    <string name="not_found">No movies were found</string>
+    <string name="no_internet">No internet connection.</string>
+    <string name="vote_average">Vote average:</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="pref_sort_title">Sort movies by:</string>
+    <string name="pref_sort_key">Most Popular</string>
+    <string name="pref_sort_default_value">0</string>
+
+    <string-array name="pref_sort_entries">
+        <item>Most Popular</item>
+        <item>Highest Rated</item>
+    </string-array>
+    <string-array name="pref_sort_entry_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+</resources>

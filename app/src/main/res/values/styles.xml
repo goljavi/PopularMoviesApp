@@ -1,0 +1,85 @@
+<resources>
+
+    <!-- Settings activity theme. -->
+    <style name="SettingsTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar.V14.Sunshine.NoTitle</item>
+    </style>
+
+    <!-- Settings activity action bar styles -->
+    <style name="ActionBar.V14.Sunshine.NoTitle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:logo">@android:color/transparent</item>
+        <item name="android:height">56dp</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/card_margins</item>
+        <item name="android:layout_marginRight">@dimen/card_margins</item>
+        <item name="android:layout_marginTop">@dimen/card_margins</item>
+        <item name="android:layout_marginBottom">@dimen/card_margins</item>
+    </style>
+
+    <style name="CardImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/card_image_layout_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="CardTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/card_title_margins</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
+    </style>
+
+    <style name="CardRelease">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/card_title_margins_opt</item>
+        <item name="android:layout_marginRight">@dimen/card_title_margins</item>
+        <item name="android:textSize">@dimen/card_text_size</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="CardVotes">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/card_title_margins_opt</item>
+        <item name="android:layout_marginRight">@dimen/card_title_margins</item>
+        <item name="android:textSize">@dimen/card_votes_size</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="CardText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/card_text_margins</item>
+        <item name="android:layout_marginRight">@dimen/card_text_margins</item>
+        <item name="android:layout_marginBottom">@dimen/card_text_margins</item>
+        <item name="android:textSize">@dimen/card_text_size</item>
+    </style>
+
+    <style name="PlayButton">
+        <item name="android:layout_marginTop">@dimen/card_text_margins</item>
+        <item name="android:layout_marginLeft">@dimen/card_text_margins</item>
+        <item name="android:layout_marginRight">@dimen/card_text_margins</item>
+        <item name="android:layout_marginBottom">@dimen/card_text_margins</item>
+    </style>
+
+
+</resources>
