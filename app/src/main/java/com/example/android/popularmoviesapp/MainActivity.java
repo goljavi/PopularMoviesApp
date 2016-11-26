@@ -26,12 +26,15 @@ import java.util.List;
 
 import static android.R.attr.key;
 import static android.view.View.GONE;
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Movie>> {
     public static final String LOG_TAG = MainActivity.class.getName();
     private AppAdapter mAppAdapter;
 
-    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
+    //Sort preference can be 0 or 1 so i initialize
+    //mSortCriteria on a value that is not 0 nor 1
+    private int mSortCriteria = 5;
 
 
     @Override
@@ -67,19 +70,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
             });
 
-            //listener on changed sort order preference:
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+            // Get a reference to the LoaderManager, in order to interact with loaders.
+            LoaderManager loaderManager = getLoaderManager();
 
-            prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-                public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-
-                    runLoader();
-
-                }
-            };
-            prefs.registerOnSharedPreferenceChangeListener(prefListener);
-
-            runLoader();
+            // Initialize the loader. Pass in the int ID constant defined above and pass in null for
+            // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
+            // because this activity implements the LoaderCallbacks interface).
+            loaderManager.initLoader(1, null, this);
 
         } else {
             //Else if there's no internet connection, display a textview that says it
@@ -93,18 +90,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-    public void runLoader() {
-        // Clear the adapter of previous data
-        mAppAdapter.clear();
-
-        // Get a reference to the LoaderManager, in order to interact with loaders.
-        LoaderManager loaderManager = getLoaderManager();
-
-        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-        // because this activity implements the LoaderCallbacks interface).
-        loaderManager.initLoader(1, null, this);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,10 +122,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
-        // If there is valid data, then add it to the adapter's
-        // data set. This will trigger the ListView to update.
-        if (movies != null && !movies.isEmpty()) {
-            mAppAdapter.addAll(movies);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int sortCriteria = Integer.parseInt(preferences.getString(getString(R.string.pref_sort_key), getString(R.string.pref_sort_default_value)));
+
+        if(mSortCriteria != sortCriteria) {
+            // Clear the adapter of previous data
+            mAppAdapter.clear();
+
+            // If there is valid data, then add it to the adapter's
+            // data set. This will trigger the ListView to update.
+            if (movies != null && !movies.isEmpty()) {
+                mAppAdapter.addAll(movies);
+            }
+
+            mSortCriteria = sortCriteria;
         }
 
         //If there's no data, the ListView or Gridview controller
